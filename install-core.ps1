@@ -482,17 +482,19 @@ if (Test-Path $ExistingApp -PathType Leaf) {
 
     if (Test-Path $InstallerDest) {
         Write-Host ""
-        Write-Host "  **********************************************************" -ForegroundColor Red
-        Write-Host "  *  STOP! MANUAL ACTION REQUIRED!                          *" -ForegroundColor Red
-        Write-Host "  **********************************************************" -ForegroundColor Red
-        Write-Host ""
-        Write-Host "  1. The official AnythingLLM installer will open now." -ForegroundColor Yellow
-        Write-Host "  2. When it asks for 'Install Location', choose your USB!" -ForegroundColor Red
-        Write-Host "     Path: $USB_Drive\anythingllm" -ForegroundColor White
-        Write-Host "  3. Wait for it to finish, then close the installer." -ForegroundColor Yellow
-        Write-Host ""
-        Write-Host "  Launching installer window now..." -ForegroundColor Magenta
+Write-Host "  **********************************************************" -ForegroundColor Red
+Write-Host "  *  STOP! MANUAL ACTION REQUIRED!                          *" -ForegroundColor Red
+Write-Host "  **********************************************************" -ForegroundColor Red
+Write-Host ""
+Write-Host "  1. The official AnythingLLM installer will open now." -ForegroundColor Yellow
+Write-Host "  2. When it asks for 'Install Location', choose your USB!" -ForegroundColor Red
 
+$Path = Join-Path $USB_Drive "anythingllm"
+Write-Host "     Path: $Path" -ForegroundColor White
+
+Write-Host "  3. Wait for it to finish, then close the installer." -ForegroundColor Yellow
+Write-Host ""
+Write-Host "  Launching installer window now..." -ForegroundColor Magenta
         # Launch the installer in interactive mode (no silent flags)
         Start-Process -FilePath $InstallerDest -Wait
 
